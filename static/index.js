@@ -52,6 +52,7 @@ function initGraph(links) {
     .data(nodes)
     .enter().append("circle")
     .attr("class", "node")
+    .attr("stroke", function (d) { return colors[d.group] })
     .attr("r", 4.5)
     .call(force.drag);
 
@@ -76,6 +77,7 @@ function initGraph(links) {
     return nodesByName[name] || (nodesByName[name] = { name: name });
   }
 }
+
 
 function onSearch() {
   var firstClient = document.getElementById('first-client-input').value;
