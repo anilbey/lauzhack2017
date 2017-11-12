@@ -83,12 +83,17 @@ function onSearch() {
   var firstClient = document.getElementById('first-client-input').value;
   var secondClient = document.getElementById('second-client-input').value;
   var transactionCount = document.getElementById('transaction-count-input').value;
-  var checked = document.getElementById('check-box').value;
-  fetch(`./search?first_client=${firstClient}&second_client=${secondClient}&transaction_count=${transactionCount}&check=${checked}`)
+  fetch(`./search?first_client=${firstClient}&second_client=${secondClient}&transaction_count=${transactionCount}`)
     .then(res => res.json())
     .then(body => initGraph(body));
 }
 
-function handleClick(cb) {
-  display("Clicked, new value = " + cb.checked);
+function handleClick() {
+    var firstClient = document.getElementById('first-client-input').value;
+  var secondClient = document.getElementById('second-client-input').value;
+  var transactionCount = document.getElementById('transaction-count-input').value;
+  fetch(`./amount?first_client=${firstClient}&second_client=${secondClient}&transaction_count=${transactionCount}`)
+    .then(res => res.json())
+    .then(body => initGraph(body));
+  //display("Clicked, new value = " + cb.checked);
 }
