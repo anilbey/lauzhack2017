@@ -1,5 +1,5 @@
-var width = 960,
-  height = 500;
+var width = 1200,
+  height = 900;
 
 var svg = d3.select("svg")
 
@@ -52,8 +52,8 @@ function initGraph(links) {
     .data(nodes)
     .enter().append("circle")
     .attr("class", "node")
-    .attr("stroke", function (d) { return colors[d.group] })
-    .attr("r", 4.5)
+    .attr("r", 6.5)
+    .attr("color", function (d) { return colors[d.group] })
     .call(force.drag);
 
   // Start the force layout.
@@ -83,7 +83,12 @@ function onSearch() {
   var firstClient = document.getElementById('first-client-input').value;
   var secondClient = document.getElementById('second-client-input').value;
   var transactionCount = document.getElementById('transaction-count-input').value;
-  fetch(`./search?first_client=${firstClient}&second_client=${secondClient}&transaction_count=${transactionCount}`)
+  var checked = document.getElementById('check-box').value;
+  fetch(`./search?first_client=${firstClient}&second_client=${secondClient}&transaction_count=${transactionCount}&check=${checked}`)
     .then(res => res.json())
     .then(body => initGraph(body));
+}
+
+function handleClick(cb) {
+  display("Clicked, new value = " + cb.checked);
 }

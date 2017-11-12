@@ -34,6 +34,11 @@ def search():
 	source = request.args.get('first_client')
 	target = request.args.get('second_client')
 	value = request.args.get('transaction_count')
+	checked = request.args.get('check')
+	if checked:
+		print("checked")
+	else:
+		print("tayyar")
 	print(source+target+value)
 	return get_transaction(source,target)
 
@@ -69,7 +74,7 @@ def get_transaction(source,target):
 	print('sss')
 
 	transactions['group']=1
-	arr = transactions.head(20).to_dict('records')
+	arr = transactions.head(200).to_dict('records')
 	json_string = json.dumps(arr)
 	return json_string
 

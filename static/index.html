@@ -10,7 +10,7 @@
 <body>
   
 
-  <div class="row padding">
+  <div class="container">
     <div class="col-md-4">
       <input type="text" class="form-control" id="first-client-input" placeholder="First Client">
     </div>
@@ -20,15 +20,22 @@
     <div class="col-md-2">
       <input type="number" class="form-control" id="transaction-count-input" placeholder="Transaction count">
     </div>
+    <div class="checkbox">
+  <label><input type="checkbox" id="check-box"  onclick="handleClick(this)">total amount</label>
+  </div>
     <div class="col-md-2">
       <button class="btn btn-default" onclick="onSearch()">Search</button>
     </div>
   </div>
-  <div class="row">
+  <br>
+  <br>
+  <br>
+
+  <div class="container">
     <svg class="graph"></svg>
   </div>
 
-  
+
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="http://d3js.org/d3.v3.min.js"></script>
